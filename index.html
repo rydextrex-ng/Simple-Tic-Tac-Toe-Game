@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TicTacToe</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial scale=1.0"/>
+	<meta name="author" content="Rydextrex"/>
+	<meta name="description" content="Simple Tic Tac Toe Game"/>
+	<meta name="keywords" content="tictactoe, xoxo game, game xoxo, game, ttt, tic tac toe, XOXO">
+	<link rel="stylesheet" href="css/tictactoe.css">
+	<script src="js/sweetalert2.min.js"></script>
+	<link rel="manifest" href="js/manifest.json">
+</head>
+<body>
+	<div id="setupMenu">
+        <h1>Enter Player Names</h1>
+        <div class="input-container">
+            <input type="text" id="player1Name" class="input-field" placeholder="Player 1 (X)" required/>
+            <input type="text" id="player2Name" class="input-field" placeholder="Player 2 (O)" required/>
+        </div>
+        <input type="submit" class="play-button" value="Play"/>
+    </div>
+	<div id="gameContainer" style="display:none">
+		<h1>tic tac toe</h1>
+		<div id="cellContainer">
+			<div cellIndex="0" class="cell"><span class="char"></span></div>
+			<div cellIndex="1" class="cell"><span class="char"></span></div>
+			<div cellIndex="2" class="cell"><span class="char"></span></div>
+			<div cellIndex="3" class="cell"><span class="char"></span></div>
+			<div cellIndex="4" class="cell"><span class="char"></span></div>
+			<div cellIndex="5" class="cell"><span class="char"></span></div>
+			<div cellIndex="6" class="cell"><span class="char"></span></div>
+			<div cellIndex="7" class="cell"><span class="char"></span></div>
+			<div cellIndex="8" class="cell"><span class="char"></span></div>
+		</div>
+		<h2 id="statusText"></h2>
+		<p id="xWin"><span id="p1"></span><span id="winX">0</span></p>
+		<p id="oWin"><span id="p2"></span><span id="winO">0</span></p>
+		<p id="draw">Draws : <span id="draws">0</span></p>
+		<div id="controls">
+			<p onclick="undoMove()" id="undoBtn">Undo</p>
+		    <p onclick="reset()" id="clearCell">Clear</p>
+		    <p onclick="resetData()" id="reset">Reset</p>
+		</div>
+	</div>
+	<script src="js/tictactoe.js"></script>
+</body>
+</html>
