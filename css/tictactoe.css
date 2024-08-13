@@ -78,37 +78,37 @@ body {
 }
 
 p {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: bold;
 }
 
 #undoBtn  {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	color: #006DFF;
 	cursor: pointer;
 }
 
 #clearCell  {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	color: #FFCC00;
 	cursor: pointer;
 }
 
 #reset {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	color: #00FF4D;
 	cursor: pointer;
 }
-#changeNames {
-	font-size: 1.5rem;
-	font-weight: bold;
+
+#newNames {
 	color: red;
+	font-size: 1.3rem;
+	font-weight: bold;
 	cursor: pointer;
 }
-
 
 #winx {
 	color: #FF0062;
@@ -125,3 +125,4 @@ p {
 #controls {
 	display: inline-block;
 }
+
