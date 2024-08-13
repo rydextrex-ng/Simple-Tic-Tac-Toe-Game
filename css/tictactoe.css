@@ -1,0 +1,119 @@
+@font-face {
+	src: url('fonts/PermanentMarker-Regular.ttf');
+	font-family: "Permanent Marker";
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	font-family: "Permanent Marker";
+	background-color: white;
+}
+
+#setupMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-container {
+	text-align: center;
+    margin-bottom: 20px;
+}
+       
+.input-field {
+	font-family: "Permanent Marker";
+    font-size: 24px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    outline: none;
+}
+
+.play-button {
+	font-family: "Permanent Marker";
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #00FF4D;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.play-button:hover {
+	background-color: #00CC3D;
+}
+        
+.cell{
+	width: 70px;
+	height: 70px;
+	border: 2px solid;
+	box-shadow: 0 0 0 2px;
+	line-height: 70px;
+	font-size: 35px;
+	font-weigth: bold;
+	cursor: pointer;
+	text-align: center;
+}
+
+#gameContainer {
+	font-family: "Permanent Marker", monospace;
+	text-align: center;
+}
+
+#cellContainer {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	width: 225px;
+	margin: auto;
+}
+
+#statusText {
+	color: red;
+}
+
+p {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+#undoBtn  {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #006DFF;
+	cursor: pointer;
+}
+
+#clearCell  {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #FFCC00;
+	cursor: pointer;
+}
+
+#reset {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #00FF4D;
+	cursor: pointer;
+}
+#winx {
+	color: #FF0062;
+}
+
+#wino {
+	color: #00EDFF;
+}
+
+#draws {
+	color: #FFA126;
+}
+
+#controls {
+	display: inline-block;
+}
