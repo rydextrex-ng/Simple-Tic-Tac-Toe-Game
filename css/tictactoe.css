@@ -102,6 +102,14 @@ p {
 	color: #00FF4D;
 	cursor: pointer;
 }
+#changeNames {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: red;
+	cursor: pointer;
+}
+
+
 #winx {
 	color: #FF0062;
 }
