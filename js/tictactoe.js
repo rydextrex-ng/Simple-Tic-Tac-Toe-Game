@@ -189,6 +189,25 @@ function redoMove() {
     currentPlayer = player;
 }
 */
+function changeNames() {
+    Swal.fire({
+        title: 'Change Name',
+        text: "Do you want to change the player names?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Reset player names and show the setup menu
+            document.getElementById('player1Name').value = '';
+            document.getElementById('player2Name').value = '';
+            document.getElementById('setupMenu').style.display = 'flex';
+            document.getElementById('gameContainer').style.display = 'none';
+        }
+    });
+}
+
 document.querySelector('.play-button').addEventListener('click', () => {
 	const player1Name = document.getElementById('player1Name');
 	const player2Name = document.getElementById('player2Name');
