@@ -1,5 +1,5 @@
 @font-face {
-	src: url('fonts/PermanentMarker-Regular.ttf');
+	src: url('fonts/PermanentMarker-Regular.ttf') format('truetype');
 	font-family: "Permanent Marker";
 }
 
