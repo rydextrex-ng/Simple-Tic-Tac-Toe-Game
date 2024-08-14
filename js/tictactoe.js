@@ -55,14 +55,6 @@ function cellClicked() {
 	if (options[cellIndex] != '' || !running){
 		return;
 	}
-	else if (options[cellIndex[4]] === ''){
-		Swal.fire({
-            title: 'Rules',
-            text: 'Center must be filled first',
-            icon: 'warning'
-        });
-        return;
-	}
 	else {
 		moveHistory.push({ index:          cellIndex, player: currentPlayer });
         options[cellIndex] = currentPlayer;
@@ -113,12 +105,12 @@ function checkWinner() {
 	    }
 		statusText.textContent = `${currentPlayerName} wins`;
 		if (currentPlayer == 'X'){
-			winX.textContent++;
+			xWins.textContent++;
 			running = false;
 			setTimeout(() => {reset()}, 1000);
 		}
 		else {
-			winO.textContent++;
+			oWins.textContent++;
 			running = false;
 			setTimeout(() => {reset()}, 1000);
 		}
@@ -143,7 +135,6 @@ function reset() {
 	statusText.textContent = `${currentPlayerName}'s turn`;
 	cells.forEach(cell => cell.textContent = '');
 	moveHistory.length = 0;
-	redoStack.lengt = 0;
 	running = true;
 }
 
@@ -171,27 +162,10 @@ function undoMove() {
     document.getElementById('statusText').textContent = `${currentPlayerName}'s turn`;
     document.getElementById('statusText').style.color = (currentPlayer === 'X') ? 'red' : 'blue';
 }
-/*
-function redoMove() {
-    if (redoStack.length === 0 || !running) {
-    	return;
-    }
-    if (cells.forEach(cell => cell.textContent === "")) {
-    	return;
-    }
 
-    const lastUndoneMove = redoStack.pop();
-    options[lastUndoneMove.index] = lastUndoneMove.player;
-    cells[lastUndoneMove.index].textContent = lastUndoneMove.player;
-    cells[lastUndoneMove.index].removeEventListener("click", cellClicked);
-    moveHistory.push(lastUndoneMove);
-    changePlayer();
-    currentPlayer = player;
-}
-*/
 function changeNames() {
     Swal.fire({
-        title: 'Change Name',
+        title: 'Create New?',
         text: "Do you want to change the player names?",
         icon: 'question',
         showCancelButton: true,
@@ -204,6 +178,7 @@ function changeNames() {
             document.getElementById('player2Name').value = '';
             document.getElementById('setupMenu').style.display = 'flex';
             document.getElementById('gameContainer').style.display = 'none';
+            reset();
         }
     });
 }
@@ -230,16 +205,58 @@ document.querySelector('.play-button').addEventListener('click', () => {
     }
 });
 
-let message = `Enter both player names and click play. Get a consecutive three similar symbol in horizontals, verticals, and diagonals. You can clear the board, undo a move, and reset scoreboard.
-Enjoy playing! 😊`;
+// Function to update progress bar and percentage display
+function updateProgress(percentage) {
+    const progressBar = document.getElementById('progress');
+    const percentageDisplay = document.getElementById('percentageDisplay');
+    percentage = Math.floor(percentage); // Round down to the nearest whole number
+    progressBar.style.width = percentage + '%';
+    percentageDisplay.textContent = percentage + '%';
+}
 
+// Simulate loading with randomized progress speed but ensure total time is 5 seconds
+function simulateLoading() {
+    const totalDuration = 5000; // Total duration of 5 seconds
+    let startTime = Date.now();
+    let percentage = 0;
+
+    function step() {
+        let elapsed = Date.now() - startTime;
+        percentage = Math.min(100, (elapsed / totalDuration) * 100);
+
+        // Randomize speed by adjusting the progress update interval
+        let speedFactor = 1 + Math.random(); // Between 1 and 2 times the normal speed
+        setTimeout(() => {
+            updateProgress(percentage);
+            if (percentage < 100) {
+                requestAnimationFrame(step);
+            } else {
+                document.getElementById('loadingScreen').style.display = 'none'; // Hide the loading screen
+                showMechanicsAlert(); // Show the mechanics alert after loading
+            }
+        }, 100 / speedFactor);
+    }
+
+    step(); // Start the loading simulation
+}
+
+// Function to show the mechanics alert
+function showMechanicsAlert() {
+    let message = `Enter both player names and click play. Get a consecutive three similar symbol in horizontals, verticals, and diagonals. You can clear the board, undo a move, and reset scoreboard. Enjoy playing! 😊`;
+    
+    Swal.fire({
+        title: 'Mechanics',
+        text: message,
+        icon: 'info'
+    });
+}
+
+// Start loading simulation on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-	Swal.fire({
-            title: 'Mechanics',
-            text: message,
-            icon: 'info'
-        });
+    simulateLoading(); // Start the loading simulation
 });
+
+
 
 if ('serviceWorker' in navigator) {
        window.addEventListener('load', () => {
@@ -252,3 +269,5 @@ if ('serviceWorker' in navigator) {
            });
        });
      }
+     
+     
